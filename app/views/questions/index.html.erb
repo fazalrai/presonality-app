@@ -1,0 +1,72 @@
+
+<%# <center>
+      <p id="number">1</p>
+      <button id="next" onclick="next()">Next</button>
+</center> %>
+
+<% questions = Question.all %>
+
+<form class=" bg-white px-4" action="/test" method='get'>
+<div class='container'>
+<% questions.each do |q| %>
+
+<div class='row' id='<%= q.id %>'>
+<div class='col-sm-3'></div>
+<div class="col-sm-6">
+  <h4 class="fw-bold text-center mt-3"></h4>
+    <p class="fw-bold"> <%= q.text %> </p>
+    <% q.options.each do |op| %>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="radio" name="question[<%=q.id%>]" id="radioExample<%= q.id %>" value='<%= op.score %>' />
+      <label class="form-check-label" for="radioExample<%= q.id %>">
+        <%= op.text %>
+      </label>
+    </div>
+    <%end%>
+</div>
+<div class='col-sm-3'></div>
+</div>
+<%end%>
+<div class="text-end" id='number'>
+    <button type="submit" class="btn btn-primary" id="next" onclick="next()">Next</button>
+</div>
+</div>
+</form>
+<script>
+
+  backButton = document.getElementById("back");
+  nextButton = document.getElementById("next");
+  var i = 1;
+
+  function ready() {
+    backButton.disabled = true;
+  }
+  
+
+  number = document.getElementById("number");
+  function back() {
+
+    document.getElementById(i).style.display = 'block'
+
+    i--;
+    if (i == 1) {
+      backButton.disabled = true;
+    }
+    nextButton.disabled = false;
+    
+    document.getElementById(i).style.display =  'none';
+  }
+
+  function next() {
+    document.getElementById(i).style.display = 'none'
+    i++;
+    if (i == 4) {
+      nextButton.disabled = true;
+    }
+    
+    document.getElementById(i).style.display =  'block';
+  }
+
+
+
+</script>

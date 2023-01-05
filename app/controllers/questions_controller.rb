@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
   def index; end
 
   private
+
   def get_questions
     @questions = Question.all
   end

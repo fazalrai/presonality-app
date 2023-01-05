@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :questions, only: [:index]
+
+  get '/test', to: 'questions#test'
 end
