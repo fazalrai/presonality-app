@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:index]
 
-  get '/test', to: 'questions#test'
+  get '/result', to: 'questions#result'
 end
