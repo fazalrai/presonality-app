@@ -125,3 +125,125 @@ if question.persisted?
     }
   ])
 end
+
+#Question 6
+question = Question.create!(text: "Are You Easily Intimidated?")
+
+if question.persisted?
+  question.options.create!([
+    {
+      text: "Not at all.",
+      score: 4
+    },
+    {
+      text: "I don't think, I get intimidated easily.",
+      score: 3
+    },
+    {
+      text: "I think, I get intimidated easily.",
+      score: 2
+    },
+    {
+      text: "Yes.",
+      score: 1
+    }
+  ])
+end
+
+
+#Question 7
+question = Question.create!(text: "Do You panic in a social gathering easily")
+
+if question.persisted?
+  question.options.create!([
+    {
+      text: "Not at all.",
+      score: 4
+    },
+    {
+      text: "I don't think, I get panicked easily.",
+      score: 3
+    },
+    {
+      text: "I think, I get panicked easily.",
+      score: 2
+    },
+    {
+      text: "Yes.",
+      score: 1
+    }
+  ])
+end
+
+
+#Question 8
+question = Question.create!(text: "I Seek Adventure.")
+
+if question.persisted?
+  question.options.create!([
+    {
+      text: "True",
+      score: 4
+    },
+    {
+      text: "Somewhat True",
+      score: 3
+    },
+    {
+      text: "Somewhat False",
+      score: 2
+    },
+    {
+      text: "False",
+      score: 1
+    }
+  ])
+end
+
+#Question 9
+question = Question.create!(text: "I can't stand confrontations.")
+
+if question.persisted?
+  question.options.create!([
+    {
+      text: "True",
+      score: 4
+    },
+    {
+      text: "Somewhat True",
+      score: 3
+    },
+    {
+      text: "Somewhat False",
+      score: 2
+    },
+    {
+      text: "False",
+      score: 1
+    }
+  ])
+end
+
+#Question 10
+question = Question.create!(text: "I can talk others into doing things")
+
+if question.persisted?
+  question.options.create!([
+    {
+      text: "True",
+      score: 4
+    },
+    {
+      text: "Somewhat True",
+      score: 3
+    },
+    {
+      text: "Somewhat False",
+      score: 2
+    },
+    {
+      text: "False",
+      score: 1
+    }
+  ])
+end

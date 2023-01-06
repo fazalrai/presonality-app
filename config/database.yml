@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: personality_test_dev
+  database: pt_dev
   pool: 5
   username: postgres
   password: password
@@ -47,7 +47,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: personality_test_test
+  database: pt_test
   pool: 5
   username: postgres
   password: password

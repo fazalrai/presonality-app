@@ -11,7 +11,9 @@ class QuestionsController < ApplicationController
   private
 
   def get_questions
-    @questions = Question.all
+    @questions = Question.first(5)
+    puts @questions
+
   end
 
   def calculate_score

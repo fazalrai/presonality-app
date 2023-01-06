@@ -18,12 +18,9 @@
 </script> %>
 
 
-
-<% questions = Question.all %>
-
 <form class="px-4" action="/result" method='get'>
    <div class='container d-flex align-items-center justify-content-center vh-100'>
-      <% questions.each do |q| %>
+      <% @questions.each do |q| %>
       <div id='<%= q.id %>' style='display:none;'>
          <div>
 
@@ -31,7 +28,7 @@
             <h3 class="fw-bold py-4"> <%= q.text %> </h3>
             <% q.options.each do |op,index| %>
             <div class="form-check mb-3">
-               <input class="form-check-input" type="radio" name="question[<%=q.id%>]" id="question<%= q.id %>(<%= op.score %>)" value='<%= op.score %>' />
+               <input class="form-check-input" type="radio" name="question[<%=q.id%>]" id="question<%= q.id %>(<%= op.score %>)" value='<%= op.score %>' Required/>
                <label class="form-check-label" for="radioExample<%= q.id %>" style='font-size: 20px'>
                <%= op.text %>
                </label>
@@ -40,16 +37,16 @@
          </div>
       </div>
       <%end%>
-      <div class="text-end" id='number' style='position: absolute; top: 70%; left: 65%'>
-         <button type="button" class="btn btn-primary" id="next" >Next</button>
-         <button type="submit" class="btn btn-primary glow-on-hover" id='submit'  style='display:none'>Submit</button>
+      <div class="text-end" id='number'>
+         <button type="button" style='position: absolute; top: 70%; left: 65%' class="btn btn-primary" id="next" >Next</button>
+         <button type="submit" style='position: absolute; top: 42%; left: 42%; display:none' class="btn btn-primary glow-on-hover" id='submit' >Submit</button>
       </div>
    </div>
 </form>
 <script>
   backButton = document.getElementById("back");
   nextButton = document.getElementById("next");
-  var i = 2;
+  var i = 1;
   document.getElementById(i).style.display = 'block';
   
 
@@ -74,7 +71,7 @@
    else{
     document.getElementById(i).style.display = 'none';
     i++;
-    if (i == 7) {
+    if (i == 6) {
       document.getElementById("next").style.display = 'none';
       document.getElementById("submit").style.display = 'block';
     }
