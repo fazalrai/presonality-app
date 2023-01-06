@@ -5,11 +5,7 @@ class QuestionsController < ApplicationController
   def index; end
 
   def result
-    if @score > 2.5
-      @message = "Extrovert"
-    else
-      @message = "Introvert"
-    end 
+    @message = @score > 2.5 ? "Extrovert" : "Introvert"
   end
 
   private
@@ -20,12 +16,16 @@ class QuestionsController < ApplicationController
 
   def calculate_score
     @question = params[:question]
-    @score = 0
-    @question.each do |q|
-      @score = q[1].to_i + @score
-    end
-    @score.to_f
+    @score = total_score.to_f
     @score = @score / 5
   end
 
+  def total_score
+    score = 0
+    @question.each do |q|
+      score = q[1].to_i + score
+    end
+    score
+  end
+  
 end
