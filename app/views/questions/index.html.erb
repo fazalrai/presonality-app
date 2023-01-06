@@ -4,58 +4,7 @@
       <button id="next" onclick="next()">Next</button>
 </center> %>
 
-<% questions = Question.all %>
-
-<form class=" bg-white px-4" action="/result" method='get'>
-   <div class='container'>
-      <% questions.each do |q| %>
-      <div class='row' id='<%= q.id %>'>
-         <div class='col-sm-3'></div>
-         <div class="col-sm-6">
-            <h4 class="fw-bold text-center mt-3"></h4>
-            <p class="fw-bold"> <%= q.text %> </p>
-            <% q.options.each do |op| %>
-            <div class="form-check mb-2">
-               <input class="form-check-input" type="radio" name="question[<%=q.id%>]" id="radioExample<%= q.id %>" value='<%= op.score %>' />
-               <label class="form-check-label" for="radioExample<%= q.id %>">
-               <%= op.text %>
-               </label>
-            </div>
-            <%end%>
-         </div>
-         <div class='col-sm-3'></div>
-      </div>
-      <%end%>
-      <div class="text-end" id='number'>
-         <button type="submit" class="btn btn-primary" id="next" onclick="next()">Next</button>
-      </div>
-   </div>
-</form>
-<script>
-
-  backButton = document.getElementById("back");
-  nextButton = document.getElementById("next");
-  var i = 1;
-
-  function ready() {
-    backButton.disabled = true;
-  }
-  
-
-  number = document.getElementById("number");
-  function back() {
-
-    document.getElementById(i).style.display = 'block'
-
-    i--;
-    if (i == 1) {
-      backButton.disabled = true;
-    }
-    nextButton.disabled = false;
-    
-    document.getElementById(i).style.display =  'none';
-  }
-
+<%# <script>
   function next() {
     document.getElementById(i).style.display = 'none'
     i++;
@@ -66,6 +15,82 @@
     document.getElementById(i).style.display =  'block';
   }
 
+</script> %>
+
+
+
+<% questions = Question.all %>
+
+<form class="px-4" action="/result" method='get'>
+   <div class='container d-flex align-items-center justify-content-center vh-100'>
+      <% questions.each do |q| %>
+      <div id='<%= q.id %>' style='display:none;'>
+         <div>
+
+              <p style='color: red' id='error<%= q.id %>'></p>
+            <h3 class="fw-bold py-4"> <%= q.text %> </h3>
+            <% q.options.each do |op,index| %>
+            <div class="form-check mb-3">
+               <input class="form-check-input" type="radio" name="question[<%=q.id%>]" id="question<%= q.id %>(<%= op.score %>)" value='<%= op.score %>' />
+               <label class="form-check-label" for="radioExample<%= q.id %>" style='font-size: 20px'>
+               <%= op.text %>
+               </label>
+            </div>
+            <%end%>
+         </div>
+      </div>
+      <%end%>
+      <div class="text-end" id='number' style='position: absolute; top: 70%; left: 65%'>
+         <button type="button" class="btn btn-primary" id="next" >Next</button>
+         <button type="submit" class="btn btn-primary glow-on-hover" id='submit'  style='display:none'>Submit</button>
+      </div>
+   </div>
+</form>
+<script>
+  backButton = document.getElementById("back");
+  nextButton = document.getElementById("next");
+  var i = 2;
+  document.getElementById(i).style.display = 'block';
+  
+
+  number = document.getElementById("number");
+  // function back() {
+
+  //   document.getElementById(i).style.display = 'block';
+
+  //   i--;
+  //   if (i == 1) {
+  //     backButton.disabled = true;
+  //   }
+  //   nextButton.disabled = false;
+    
+  //   document.getElementById(i).style.display =  'none';
+  // }
+
+ document.getElementById("next").onclick = next = () => {
+   if(!document.getElementById('question'+i+'(1)').checked && !document.getElementById('question'+i+'(2)').checked && !document.getElementById('question'+i+'(3)').checked && !document.getElementById('question'+i+'(4)').checked) {
+     document.getElementById('error'+i).innerHTML = 'Kindly select an option.';
+   }
+   else{
+    document.getElementById(i).style.display = 'none';
+    i++;
+    if (i == 7) {
+      document.getElementById("next").style.display = 'none';
+      document.getElementById("submit").style.display = 'block';
+    }
+    
+    document.getElementById(i).style.display =  'inline';
+   }
+  }
+
 
 
 </script>
+
+
+<%# <script> 
+document.addEventListener('ready', () => {
+  
+  console.log("I am here");
+  });
+</script> %>
