@@ -1,7 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :get_questions, only: [:index]
   before_action :calculate_score, only: [:result]
-  
+
+  layout 'application'
+
   def index; end
 
   def result
