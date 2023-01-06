@@ -18,7 +18,7 @@
 </script> %>
 
 
-<form class="px-4" action="/result" method='get'>
+<form class="px-4" action="/result" method='post'>
    <div class='container d-flex align-items-center justify-content-center vh-100'>
       <% @questions.each do |q| %>
       <div id='<%= q.id %>' style='display:none;'>
