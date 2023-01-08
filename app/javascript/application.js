@@ -28,5 +28,5 @@ import "controllers";
   };
 
   nextButton.onclick = next
-});
+
 
