@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
   end
 
   def total_score
+    puts @question
     score = 0
     @question.each do |q|
       score = q[1].to_i + score

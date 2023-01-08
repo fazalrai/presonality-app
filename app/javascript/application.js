@@ -2,8 +2,6 @@
 import "@hotwired/turbo-rails";
 import "controllers";
 
-
-document.addEventListener("DOMContentLoaded", () => {
   let nextButton = document.getElementById("next");
   var i = 1;
   document.getElementById(i).style.display = "block";
@@ -22,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       i++;
       if (i == 6) {
         nextButton.style.display = "none";
-        document.getElementById("submit").style.display = "block";
+        document.getElementById("submitBtn").style.display = "block";
       }
 
       document.getElementById(i).style.display = "inline";
