@@ -1,24 +1,62 @@
-# README
+# Personality Test
+Personality Test - Ruby On Rails take home test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Local Development (Mac OS / Ubuntu)
 
-Things you may want to cover:
+ - Ruby version 2.7.5
+ - Rails version 7.0.4
 
-* Ruby version
+**System Level Dependencies:**
 
-* System dependencies
+ - PostgreSQL 14.3
 
-* Configuration
+**Project Level Dependencies**
 
-* Database creation
+ - bundle install
 
-* Database initialization
+**Setting up the Database**
 
-* How to run the test suite
+ - rails db:create 
+ - rails db:migrate 
+ - rails db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+**Running the Rails Server**
 
-* Deployment instructions
+ - rails server 
 
-* ...
+**Running Tests**
+
+- bundle exec rspec
+
+**Additional Gems - Global**
+
+- pg
+- sass-rails
+- sassc-rails
+
+**Additional Gems - Environment Specific**
+
+- rspec-rails (For Dev & Test ENV)
+- shoulda-matchers (For Dev & Test ENV)
+- rails-controller-testing (For Dev & Test ENV)
+
+# API Endpoints
+
+## Personality Test:
+### Start Test
+Method: `GET`
+
+url:  `http://localhost:3000/`
+
+
+### Test
+Method: `GET`
+
+url:  `http://localhost:3000/questions`
+
+### Results
+Method: `POST`
+
+url:  `http://localhost:3000//result`
+
+
