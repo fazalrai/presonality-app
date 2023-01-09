@@ -1,0 +1,54 @@
+<form class="px-4" action="/result" method='post' id='form-question'>
+   <div class='container d-flex align-items-center justify-content-center vh-100'>
+      <% @questions.each do |q| %>
+      <div id='<%= q.id %>' style='display:none;'>
+         <div>
+
+            <p class='text-danger' id='error<%= q.id %>'></p>
+            <h3 class="fw-bold py-4"> <%= q.text %> </h3>
+            <% q.options.each do |op,index| %>
+            <div class="form-check mb-3">
+               <input class="form-check-input" type="radio" name="question[<%=q.id%>]" id="question<%= q.id %>(<%= op.score %>)" value='<%= op.score %>' Required/>
+               <label class="form-check-label" for="radioExample<%= q.id %>" style='font-size: 20px'>
+               <%= op.text %>
+               </label>
+            </div>
+            <%end%>
+         </div>
+      </div>
+      <%end%>
+      <div class="text-end" id='number'>
+         <button type="button" style='position: absolute; top: 70%; left: 65%' class="btn btn-primary" id="next" >Next</button>
+         <button type="button" style='position: absolute; top: 42%; left: 42%; display:none' class="glow-on-hover" id='submitBtn' onclick="document.getElementById('form-question').submit()" >Submit</button>
+      </div>
+   </div>
+</form>
+
+<script>
+ let nextButton = document.getElementById("next");
+  var i = 1;
+  document.getElementById(i).style.display = "block";
+
+  const next = () => {
+    if (
+      !document.getElementById("question" + i + "(1)").checked &&
+      !document.getElementById("question" + i + "(2)").checked &&
+      !document.getElementById("question" + i + "(3)").checked &&
+      !document.getElementById("question" + i + "(4)").checked
+    ) {
+      document.getElementById("error" + i).innerHTML =
+        "Kindly select an option.";
+    } else {
+      document.getElementById(i).style.display = "none";
+      i++;
+      if (i == 6) {
+        nextButton.style.display = "none";
+        document.getElementById("submitBtn").style.display = "block";
+      }
+
+      document.getElementById(i).style.display = "inline";
+    }
+  };
+
+  nextButton.onclick = next
+</script>
