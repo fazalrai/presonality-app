@@ -51,8 +51,6 @@ gem "bootsnap", require: false
 gem 'pg'
 gem 'sass-rails'
 gem 'sassc-rails'
-gem 'bundler-audit'
-
 
 
 group :development, :test do
